@@ -1,8 +1,22 @@
-import express from 'express';
-import { login } from '../controllers/auth.controller.ts';
+import { Router } from "express";
+import {
+  login,
+  getTimeToken,
+  updateToken,
+  getAllUsers,
+  saveUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/auth.controller";
 
-const routes = express.Router();
+const router = Router();
 
-routes.post('/login', login as express.RequestHandler);
+router.post("/login", login);
+router.get("/getTokenTime", getTimeToken);
+router.patch("/update/:userId", updateToken);
+router.get("/users", getAllUsers);
+router.post("/users", saveUser);
+router.put("/users/:userId", updateUser);
+router.delete("/users/:userId", deleteUser);
 
-export default routes;
+export default router;
